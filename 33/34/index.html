@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #cards{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .card {
+            width: 300px;
+            height: 400px;
+            border-radius: 10px;
+            border: 1px solid black;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        .button {
+            padding: 6px 12px;
+        }
+    </style>
+</head>
+<body>
+<!--На сторінці три картки станцій. Поки моніторинг не запущено, картки порожні. Після запуску кожна картка показує стан своєї станції, а для стану charging — ще й потужність і рівень заряду. Якщо останній запит завершився помилкою, у картці показується текст помилки.-->
+<!--Дві кнопки — «Старт моніторингу» і «Стоп моніторингу». Спочатку активна лише «Старт». Після натискання вона стає неактивною, а «Стоп» — активною, і навпаки. Кнопки керують усіма трьома станціями.-->
+<!--Під кожною карткою — поле для номера картки клієнта, кнопка «Почати зарядку» і таблиця з історією спроб цієї станції. Поки запит зарядки виконується, кнопка цієї станції неактивна. Вона знову стає активною за будь-якого результату.-->
+<!--Кнопка «Оновити все зараз» оновлює всі три станції одночасно, а не по черзі, і перемальовує картки після того, як завершилися всі три запити.-->
+<button id="startMonitoring" class="button">Старт моніторингу</button>
+<button id="stopMonitoring" class="button" disabled>Стоп моніторингу</button>
+<button id="refreshAll" class="button">Оновити все зараз</button>
+
+<div id="cards">
+    <div class="card-container">
+        <div id="card1" class="card"></div>
+        <div class="buttons">
+            <input id="cardInput1" placeholder="Номер картки">
+            <button id="startCharge1" class="button">Почати зарядку</button>
+        </div>
+        <table id="history-table1" class="history-table">
+            <thead><tr><th>Час</th><th>Картка</th><th>Рішення</th></tr></thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div class="card-container">
+        <div id="card2" class="card"></div>
+        <div class="buttons">
+            <input id="cardInput2" placeholder="Номер картки">
+            <button id="startCharge2" class="button">Почати зарядку</button>
+        </div>
+        <table id="history-table2" class="history-table">
+            <thead><tr><th>Час</th><th>Картка</th><th>Рішення</th></tr></thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div class="card-container">
+        <div id="card3" class="card"></div>
+        <div class="buttons">
+            <input id="cardInput3" placeholder="Номер картки">
+            <button id="startCharge3" class="button">Почати зарядку</button>
+        </div>
+        <table id="history-table3" class="history-table">
+            <thead><tr><th>Час</th><th>Картка</th><th>Рішення</th></tr></thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+
+<script type="module" src="main.js"></script>
+</body>
+</html>
